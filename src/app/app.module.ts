@@ -12,8 +12,6 @@ import { UpdateEmployeeComponent } from './update-employee/update-employee.compo
 import { EmployeeHomeComponent } from './employee-home/employee-home.component';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,18 +19,16 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
     EmployeeDetailsComponent,
     EmployeeListComponent,
     UpdateEmployeeComponent,
-    EmployeeHomeComponent
- ],
+    EmployeeHomeComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    CarouselModule.forRoot()
-    
+    CarouselModule.forRoot(),
   ],
   providers: [],
-  bootstrap: [AppComponent]
-  
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

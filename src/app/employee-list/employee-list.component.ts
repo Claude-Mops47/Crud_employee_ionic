@@ -5,40 +5,41 @@ import { Employee } from '../employee';
 import { EmployeeService } from '../employee.service';
 import { EmployeeDetailsComponent } from '../employee-details/employee-details.component';
 
-
 @Component({
   selector: 'app-employee-list',
   templateUrl: './employee-list.component.html',
-  styleUrls: ['./employee-list.component.css']
+  styleUrls: ['./employee-list.component.css'],
 })
 export class EmployeeListComponent implements OnInit {
-  employees:Observable<Employee[]>;
-  employee:Employee=new Employee();
+  employees: Observable<Employee[]>;
+  employee: Employee = new Employee();
 
-  constructor(private employeeService:EmployeeService, 
-    private router: Router) {}
+  constructor(
+    private employeeService: EmployeeService,
+    private router: Router
+  ) {}
 
-  ngOnInit(){
+  ngOnInit() {
     this.reloadData();
   }
-  reloadData(){
+  reloadData() {
     console.log(this.employeeService.getEmployeesList(this.employee));
-    this.employee.setOperation("listePersonne");
+    this.employee.setOperation('listePersonne');
     this.employees = this.employeeService.getEmployeesList(this.employee);
   }
-  deleteEmployee(id: number){
-    this.employeeService.deleteEmployee(id)
-    .subscribe(
-      data => {
+  deleteEmployee(id: number) {
+    this.employeeService.deleteEmployee(id).subscribe(
+      (data) => {
         console.log(data);
-    this.reloadData();
-  },
-  error =>console.log(error));
+        this.reloadData();
+      },
+      (error) => console.log(error)
+    );
   }
-  employeeDetails(id:number){
-    this.router.navigate(['details',id])
+  employeeDetails(id: number) {
+    this.router.navigate(['details', id]);
   }
-  updateEmployee(id:number){
-    this.router.navigate(['update',id]);
+  updateEmployee(id: number) {
+    this.router.navigate(['update', id]);
   }
 }
